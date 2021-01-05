@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="text-center">
-        <h1>Sign Up</h1>
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Sign Up</h3>
+    <div class="box">
         {% from "_render_field.html" import render_field %}
         <form action="{{url_for('auth.register')}}" method="post" novalidate>
             {{ form.hidden_tag() }}
