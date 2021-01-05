@@ -24,10 +24,9 @@
                     <a href="{{ url_for('auth.login') }}"  class="navbar-item">Login</a>
                     <a href="{{ url_for('auth.register') }}"  class="navbar-item">Register</a>
                     {% else %}
-                    <a href="{{ url_for('auth.register') }}"  class="navbar-item">Register</a>
                     <a href="{{ url_for('account.account') }}"  class="navbar-item">Account</a>
                     <a href="{{ url_for('auth.logout') }}"  class="navbar-item">Log out</a>
-                   <a href="{{ url_for('posts.add_post') }}" class="navbar-item">Create new post</a>
+                    <a href="{{ url_for('posts.add_post') }}" class="navbar-item">Create new post</a>
 
                     {% endif %}
                     <a href="{{ url_for('general.to_main') }}"   class="navbar-item">Main page</a>
