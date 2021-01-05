@@ -1,31 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="column is-4 is-offset-4">
 {% if current_user.is_authenticated %}
-    <li><a href="{{ url_for('posts.add_post') }}">New post</a></li>
             
     {% endif %}
-    <form>
-      <input type='text', name='q',  {% if request.args.get('q') != None %}
-      value="{{request.args.get('q')}}" {%endif%}>
-      <button type='submit'> Search</button>
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <input class="form-control" type='text', name='q',  {% if request.args.get('q') != None %}
+            value="{{request.args.get('q')}}" {%endif%}>
+                <button type='submit' class="btn btn-primary mb-2"> Search</button>
+        </div>
     </form>
     {% for post in posts.items %}
-    <div class="card text-center">
-        <div class="card-header">
-            {{post.author.username}}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{post.title}}</h5>
-          <p class="card-text">{{post.body}}</p>
-          {% if current_user.username == post.author.username %}
-        <a href="{{url_for('posts.post', post_id=post.id)}}" class="btn btn-primary">change</a>
-        {% endif %}
-        </div>
-        <div class="card-footer text-muted">
-          Posted: {{post.timestamp}} Updated: {{post.updatetime}}
-        </div>
+   <div class="box">
+       <div class="text-center">
+           <h1 style="font-size: 25px;" >{{post.title}}</h1>
+           <h5 style="text-align: left;">{{post.body}}</h5>
+           <inline><p style="text-align: left;"> Posted: </p></inline>
+           <inline><p style="text-align: left;">Updated: {{post.updatetime}}</p></inline>
+           <inline><p style="text-align: left;"> {{post.author.username}} </p></inline>
+           {% if current_user.username == post.author.username %}
+                <a href="{{url_for('posts.post', post_id=post.id)}}" class="btn btn-primary">Edit</a>
+           {% endif %}
       </div>
+   </div>
 
     {% endfor %}
 
@@ -64,4 +63,5 @@
 <p class="text-right mt-3">
  Showing page {{ posts.page }} of {{ posts.pages }}
 </p>
+</div>
 {% endblock %}

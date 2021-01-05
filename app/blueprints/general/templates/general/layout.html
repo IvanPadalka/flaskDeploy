@@ -1,44 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flask app</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">   
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% extends "base.html" %}
 
-  </head >
-
-  <body>
-    
-    <header>
-      
-      <div class="container">
-        <h1 class="logo">your advertising could be here</h1>
-        {% for cat, msg in get_flashed_messages(True) %}
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-{{cat}}">{{msg}}</li>
-    </ul>
-    {%endfor %}
-        <strong><nav>
-          <ul class="menu">
-            {% if current_user.is_anonymous %}
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-            <li><a href="{{ url_for('auth.register') }}">register</a></li>
-            {% else %}
-            <li><a href="{{ url_for('register') }}">register</a></li>
-            <li><a href="{{ url_for('account') }}">account</a></li>
-            <li><a href="{{ url_for('logout') }}">logout</a></li>
-            
-            {% endif %}
-            <li><a href="{{ url_for('.to_main') }}">main</a></li>
-            <li><a href="{{ url_for('posts') }}">posts</a></li>
-
-          </ul>
-        </nav></strong>
-      </div>
-    </header>
-    <div class="container">
-      {% block content %}
-      {% endblock %}
-    </div>
-  </body>
-</html>
+{% block content %}
+<img src="{{ url_for('static', filename='../../../../static/images/IMG_3035-01.jpg') }}"  class="profile-img" width="300" height="411">
+<h5>ABOUT ME</h5>
+<p>
+    I`m beginner developer in Precarpatian university.
+</p>
+<p>
+    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero,
+    a pharetra augue. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum
+    nulla sed consectetur. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus
+    varius blandit sit amet non magna. Nullam id dolor id nibh ultricies vehicula ut id elit.
+    Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus
+    commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam.
+    Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit
+    sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet
+    rutrum faucibus dolor auctor.
+</p>
+{% endblock %}

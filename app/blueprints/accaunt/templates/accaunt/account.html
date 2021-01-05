@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="content-selection">
-    <div class="media">
-        <img class="rounded-circle account-img" src="{{ image_file }}">
-        <div class="media-body">
-            <h2 class="account-heading">{{ current_user.username}}</h2>
-            <p class="text-secondary"> {{current_user.email}}</p>
-        </div>
-    </div>
-</div>
+<div class="column is-4 is-offset-4">
+    <h1 class="title">
+            <img class="rounded-circle account-img" src="{{image_file}}">
+                <h2 class="account-heading">{{ current_user.username }}</h2>
+                <p class="text-secondary">{{ current_user.email }}</p>
+                <p class="text-secondary">Last seen: {{ current_user.last_seen }}</p>
+</h1>
 {% from "_render_field.html" import render_field %}
+    <h3 class="title">Account info</h3>
+    <div class="box">
 <form method="post" action="{{ url_for('account.account') }}" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <dt>{{ form.picture.label() }}<br>
