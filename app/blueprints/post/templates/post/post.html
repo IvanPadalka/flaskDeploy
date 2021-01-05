@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form action="{{url_for('posts.post', post_id=post.id)}}" method="post" novalidate>
+  <input type="submit" name="delete" value="Delete Post">
+</form>
+    <div class="card text-center">
+        <div class="card-header">
+            {{post.author.username}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.body}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          Posted: {{post.timestamp}} Updated: {{post.updatetime}}
+        </div>
+      </div>
+
+      <h4> Update post </h4>
+      {% from "_render_field.html" import render_field %}
+        <form action="{{url_for('posts.post', post_id=post.id)}}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ render_field(form.title) }}
+            {{ render_field(form.body) }}
+            <p>{{ form.submit(class='btn btn-primary') }}</p>
+        </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Welcome to the Admin Demo</h1>
+<h3>Hey Admin</h3>
+
+
+<li><a href="{{ url_for('administrator.users_list_admin') }}">List of all users</a></li>
+<li><a href="{{ url_for('administrator.user_create_admin') }}">Create a new user</a></li>
+<li><a href="{{ url_for('auth.logout') }}">Click there to logout</a></li>
+
+
+
+
+
+{% endblock %}

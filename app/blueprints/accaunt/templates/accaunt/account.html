@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content-selection">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.username}}</h2>
+            <p class="text-secondary"> {{current_user.email}}</p>
+        </div>
+    </div>
+</div>
+{% from "_render_field.html" import render_field %}
+<form method="post" action="{{ url_for('account.account') }}" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <dt>{{ form.picture.label() }}<br>
+        {{ form.picture() }}
+        <p></p>
+        {{ render_field(form.username) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.about_me) }}
+        <h3>Reset password</h3>
+        {{ render_field(form.old_password) }}
+        {{ render_field(form.new_password) }}
+        {{ render_field(form.confirm_new_password) }}
+        {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+        <p>{{ form.submit(class='btn btn-primary') }}</p>
+</form>
+</div>
+</div>
+{% endblock %}

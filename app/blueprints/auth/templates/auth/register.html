@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="text-center">
+        <h1>Sign Up</h1>
+        {% from "_render_field.html" import render_field %}
+        <form action="{{url_for('auth.register')}}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ render_field(form.username) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+            {{ render_field(form.password_confirm) }}
+            <p>{{ form.submit(class='btn btn-primary') }}</p>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
